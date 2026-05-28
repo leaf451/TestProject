@@ -2,9 +2,9 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    [SerializeField] private float moveSpeed = 2f; // How fast the object moves
+    [SerializeField] private float movementSpeed = 2f; // How fast the object moves
     private Rigidbody2D rb;
-    private Vector2 movementDirection;
+    private Vector2 movementDir;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -17,13 +17,15 @@ public class PlayerMovement : MonoBehaviour
     // Update the object’s position and velocity each frame.
     void Update()
     {
-        movementDirection = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
+        //set movement direction to input direction
+        movementDir = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
 
     }
 
+    //updates every 1/60th second
     private void FixedUpdate()
     {
-        rb.linearVelocity = movementDirection * moveSpeed;
+        rb.linearVelocity = movementDir * movementSpeed;
     }
 
 }
