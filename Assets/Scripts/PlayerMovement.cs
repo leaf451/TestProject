@@ -14,7 +14,7 @@ public class PlayerMovement : MonoBehaviour
 
     
 
-    // Update the objectâ€™s position and velocity each frame.
+    // Update the object’s position and velocity each frame.
     void Update()
     {
         //set movement direction to input direction
@@ -27,6 +27,8 @@ public class PlayerMovement : MonoBehaviour
     {
         rb.linearVelocity = movementDir * movementSpeed;
     }
+
+
 
 }
 
