@@ -20,6 +20,7 @@ public class meleeEnemy : MonoBehaviour
 
     private void Update()
     {
+        //calls flip function
         if (Input.GetKeyDown(KeyCode.F))
         {
             Flip();
@@ -30,10 +31,8 @@ public class meleeEnemy : MonoBehaviour
         //Attack only when player in sight
         if (PlayerInSight())
         {
-            Debug.Log("Player detected");
             if (cooldownTimer >= attackCooldown)
             {
-                Debug.Log("Attack triggered");
                 //Attack
                 cooldownTimer = 0;
                 anim.SetTrigger("meleeAttack");
@@ -44,6 +43,8 @@ public class meleeEnemy : MonoBehaviour
         
     }
 
+    
+    //flips enemy along with detection radius
     public void Flip()
     {
         facingRight = !facingRight;
@@ -55,11 +56,15 @@ public class meleeEnemy : MonoBehaviour
         );
     }
 
+    
+    //ensures enemy is facing the correct direction with detection radius
     private Vector2 GetFacingDirection()
     {
         return facingRight ? Vector2.right : Vector2.left;
     }
 
+    
+    //funtion for detecting a player
     private bool PlayerInSight()
     {
         Vector2 direction = GetFacingDirection();
@@ -78,6 +83,8 @@ public class meleeEnemy : MonoBehaviour
         return hit != null;
     }
 
+    
+    //draws detection area
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
